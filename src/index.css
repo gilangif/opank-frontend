@@ -15,7 +15,7 @@ html {
 }
 
 .modal-backdrop-filter {
-  background-color: rgba(0, 0, 0, 0.247) !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
@@ -101,7 +101,7 @@ html {
 .group-card-thumb-dana {
   object-fit: cover;
   aspect-ratio: 1/1;
-  background-color: rgba(255, 255, 255, 0.459);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
   cursor: pointer;
   user-select: none;

@@ -11,7 +11,7 @@ function ModalGroupHeader({ group }) {
   return (
     <div className="modal-header p-2 border-0">
       <div className="d-flex gap-3 p-0">
-        <div className="col-3">
+        <div className="ratio ratio-1x1 rounded" style={{ width: "100px" }}>
           <img
             className="ratio ratio-1x1 rounded"
             src={group.thumb || DEFAULT_IMAGE}
@@ -184,7 +184,7 @@ export default function Group() {
       const page = parseInt(searchParams.get("page") || "")
       const search = searchParams.get("search") || ""
       const filter = searchParams.get("filter") || "restrict"
-      const sort = searchParams.get("sort") || ""
+      const sort = searchParams.get("sort") || "unmark"
 
       const params = {}
 
@@ -308,7 +308,7 @@ export default function Group() {
             <div className="modal-body p-2 mt-3">
               {group.dana && group.dana.length > 0 && (
                 <div className="form-floating mb-3">
-                  <textarea className="form-control text-preline font-8" value={group.dana?.join("\n\n----------------\n\n")} style={{ height: "20vh" }} />
+                  <textarea className="form-control text-preline font-8" value={[...group.dana].reverse().join("\n\n----------------\n\n")} style={{ height: "45vh" }} />
                   <label>dana</label>
                 </div>
               )}
@@ -335,6 +335,7 @@ export default function Group() {
           <select className="form-select fw-bold" value={filter} onChange={(e) => handleFilter(e, "filter")}>
             <option value="">ALL</option>
             <option value="restrict">RESTRICT</option>
+            <option value="dana">DANA</option>
           </select>
         </div>
 
@@ -344,7 +345,6 @@ export default function Group() {
             <option value="">ALL</option>
             <option value="mark">MARK</option>
             <option value="unmark">UNMARK</option>
-            <option value="dana">DANA</option>
           </select>
         </div>
       </div>
@@ -397,7 +397,7 @@ export default function Group() {
                     className="d-flex justify-content-center align-items-center  text-center group-card-thumb-layer position-absolute p-2 w-100 rounded"
                     onDoubleClick={() => updateMark(invite, !mark)}
                   >
-                    <span className="text-warning fw-bold">MARKED</span>
+                    <span className="text-warning fw-bold font-8">MARKED</span>
                   </div>
                 )}
 
@@ -406,12 +406,12 @@ export default function Group() {
                     className="d-flex justify-content-center align-items-center text-center group-card-thumb-dana position-absolute p-2 w-100 text-wrap rounded"
                     onDoubleClick={() => updateMark(invite, !mark)}
                   >
-                    {dana.length > 0 ? <span className="text-info fs-6 fw-bold font-8">CONTAIN {dana.length} DANA KAGET</span> : ""}
+                    {dana.length > 0 ? <span className="text-info fw-bold font-8">CONTAIN {dana.length} DANA KAGET</span> : ""}
                   </div>
                 )}
 
                 <div className="d-flex flex-column justify-content-evenly text-center p-2 pt-3 h-100">
-                  <Link to={link}>
+                  <Link to={link} className="text-decoration-none text-light fw-bold">
                     <span className="card-title pointer disable-select font-8 fw-bold">{title}</span>
                   </Link>
                   <span className="font-8 text-align-justify mt-0 text-wrap text-break pointer disable-select text-muted">{invite || "-"}</span>

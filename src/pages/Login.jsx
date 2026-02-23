@@ -25,7 +25,7 @@ export default function Login() {
 
       const message = `Welcome back ${username}`
 
-      toast.success(message, { position: "top-right", autoClose: 1000, hideProgressBar: true, closeOnClick: true, pauseOnHover: false, draggable: true, theme: "colored" })
+      toast.success(message, { position: "top-center", autoClose: 1000, hideProgressBar: true, closeOnClick: true, pauseOnHover: false, draggable: true, theme: "colored" })
 
       dispatch(login(data))
       navigate("/")
@@ -33,7 +33,7 @@ export default function Login() {
       const message = error?.response?.data?.message || error.message || "UNKNOWN ERROR"
 
       console.log(error)
-      toast.error(message, { position: "top-right", autoClose: 1000, hideProgressBar: true, closeOnClick: true, pauseOnHover: false, draggable: true, theme: "colored" })
+      toast.error(message, { position: "top-center", autoClose: 1000, hideProgressBar: true, closeOnClick: true, pauseOnHover: false, draggable: true, theme: "colored" })
     }
   }
 
